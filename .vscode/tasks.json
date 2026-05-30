@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Create demo dataset",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+      "args": ["scripts\\make_tone_dataset.py"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Train model",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+      "args": ["src\\train.py", "--manifest", "data\\raw\\manifest.csv", "--model", "models\\rnn_speech_model.npz"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Transcribe sample",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+      "args": ["src\\transcribe.py", "--audio", "data\\raw\\sample_hello_world.wav", "--model", "models\\rnn_speech_model.npz"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Evaluate model",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+      "args": ["src\\evaluate.py", "--manifest", "data\\raw\\manifest.csv", "--model", "models\\rnn_speech_model.npz"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Transcribe uploaded audio",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+      "args": ["src\\transcribe_uploaded_audio.py", "--audio", "data\\raw\\sample_hello_world.wav", "--engine", "rnn", "--model", "models\\rnn_speech_model.npz"],
+      "problemMatcher": []
+    }
+  ]
+}

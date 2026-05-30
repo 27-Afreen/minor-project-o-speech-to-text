@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Train RNN Speech Model",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}\\src\\train.py",
+      "args": [
+        "--manifest",
+        "data\\raw\\manifest.csv",
+        "--model",
+        "models\\rnn_speech_model.npz"
+      ],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Transcribe Sample Audio",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}\\src\\transcribe.py",
+      "args": [
+        "--audio",
+        "data\\raw\\sample_hello_world.wav",
+        "--model",
+        "models\\rnn_speech_model.npz"
+      ],
+      "console": "integratedTerminal"
+    }
+  ]
+}
